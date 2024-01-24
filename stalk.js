@@ -18,11 +18,11 @@ const firebaseConfig = {
 
     addDoc(colRef, user)
         .then(() => {
-            alert("User profile added to Firebase");
+            alert("User profile added to your stalklist");
         })
         .catch((error) => {
             console.error("Error adding user profile to Firebase:", error);
-            alert("Error adding user profile to Firebase");
+            alert("Error adding user profile to your stalklist");
         });
 }
 
