@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces User Search</title>
+    <style>
+        #searchResults {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Codeforces User Search</h1>
+
+    <label for="searchInput">Search by Codeforces handle:</label>
+    <input type="text" id="searchInput" oninput="searchUsers()" required>
+
+    <ul id="searchResults"></ul>
+
+    <script>
+        function searchUsers() {
+            var searchInput = document.getElementById('searchInput').value.toLowerCase();
+            var searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = '';
+
+            // Replace 'YOUR_CODEFORCES_API_KEY' with your actual Codeforces API key
+            // var apiKey = 'YOUR_CODEFORCES_API_KEY';
+
+            // Codeforces API endpoint for user information
+            var apiUrl = `https://codeforces.com/api/user.info?handles=${searchInput}`;
+
+            // Fetch data from Codeforces API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        var users = data.result;
+                        if (users.length > 0) {
+                            users.forEach(function(user) {
+                                var listItem = document.createElement('li');
+                                listItem.textContent = `${user.handle} - Rating: ${user.rating || 'Not rated'}`;
+                                searchResults.appendChild(listItem);
+                            });
+                        } else {
+                            var noResultsItem = document.createElement('li');
+                            noResultsItem.textContent = 'No results found';
+                            searchResults.appendChild(noResultsItem);
+                        }
+                    } else {
+                        console.error('Error fetching data from Codeforces API');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data from Codeforces API', error);
+                });
+        }
+    </script>
+</body>
+</html>
