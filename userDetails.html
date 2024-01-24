@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <!-- ... (your existing head content) -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('../images/metal-texture-with-dust-scratches-cracks-textured-backgrounds.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 60px; /* Adjusted padding for sticky navbar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            position: fixed;
+            justify-content:space-between;
+            align-items: end;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            color: white;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            margin: 15px 200px;
+            font-size: 19px;
+            padding: 10px;
+            transition: 0.3s;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid black;
+        }
+
+        .navbar a:hover{
+            color: white;
+            background-color: black;
+            border-radius: 25px;
+            font-weight: bolder;
+        }
+
+        #user-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0); /* Semi-transparent white background */
+            border-radius: 80px;
+            box-shadow: 0px 4px 10px rgb(249, 248, 248);
+            max-width: 600px; /* Adjust the maximum width as needed */
+            width: 100%;
+            color: black;
+            border: 3px solid black;
+        }
+
+        #add {
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            font-size: 15px;
+            
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bolder;
+        }
+
+        #add:hover {
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+            font-size: 17px ;
+
+        }
+        img{
+            height: 200px;
+            width: 250px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="./main.html" class="navbar-link">Home</a>
+        <a href="./show.html" class="navbar-link">Stalk List</a>
+    </div>
+
+    <div id="user-profile">
+        <!-- User profile details will be displayed here -->
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js" type="module"></script>
+    <script src="userDetails.js" type="module"></script>
+    <script src="./stalk.js" type="module"></script>
+</body>
+</html>
+
+
