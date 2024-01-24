@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('../images/metal-texture-with-dust-scratches-cracks-textured-backgrounds.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0); /* Semi-transparent blue background */
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            margin: 0 432px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 22px;
+            border-radius: 20px;
+            padding: 3px 10px;
+        }
+
+        .navbar a:hover {
+            color: white;
+            background-color: black;
+        }
+
+        .user-profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            margin-top: 70px; /* Adjusted margin to account for sticky navbar */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            max-width: 800px;
+            width: 100%;
+            color: white;
+            margin-bottom: 70px; /* Adjusted margin for bottom */
+            margin-left: 280px;
+        }
+
+        .user-profile {
+            margin: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid black;
+            border-radius: 30px;
+            box-shadow: 0px 4px 10px rgb(249, 248, 248);
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+            color: black;
+        }
+
+        img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        .delete-btn {
+            cursor: pointer;
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Add more styles or adjust as needed */
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="./main.html">Home</a>
+        <a href="./about-main.html">About</a>
+
+</div>
+
+<div class="user-profile-container" id="userTableBody">
+        <!-- User profiles will be dynamically added here -->
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
+        import { getFirestore, collection, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+    
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR8FfTUGjiSXgN2XzSHjN9owwrbOX-Uss",
+            authDomain: "oauth-ebafa.firebaseapp.com",
+            projectId: "oauth-ebafa",
+            storageBucket: "oauth-ebafa.appspot.com",
+            messagingSenderId: "657639756347",
+            appId: "1:657639756347:web:a3f1de3c56e42a45da821e"
+        };
+    
+        initializeApp(firebaseConfig);
+        const db = getFirestore();
+    
+        window.deleteProfile = async (userId) => {
+            try {
+                const userRef = doc(db, 'userProfiles', userId);
+                await deleteDoc(userRef);
+                console.log(`Profile with ID ${userId} deleted successfully`);
+                // Refresh user profiles after deletion
+                fetchUserProfiles();
+            } catch (error) {
+                console.error('Error deleting user profile:', error);
+                alert('Error deleting user profile');
+            }
+        };
+    
+        const fetchUserProfiles = async () => {
+            // Fetch user profiles from Firebase and display in the table
+            const userTableBody = document.getElementById('userTableBody');
+            userTableBody.innerHTML = '';
+    
+            try {
+                const snapshot = await getDocs(collection(db, 'userProfiles'));
+                snapshot.forEach((doc) => {
+                    const user = doc.data();
+                    const userProfileDiv = createUserProfileDiv(user);
+                    userTableBody.appendChild(userProfileDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching user profiles from Firebase:', error);
+                alert('Error fetching user profiles from Firebase');
+            }
+        };
+    
+        const createUserProfileDiv = (user) => {
+            const userProfileDiv = document.createElement('div');
+            userProfileDiv.classList.add('user-profile');
+            userProfileDiv.innerHTML = `
+                <h3>${user.userName}</h3>
+                <p>Rating: ${user.rating}</p>
+                <p>Max Rating: ${user.maxRating}</p>
+                <p>Contribution: ${user.contribution}</p>
+                <p>Country: ${user.country}</p>
+                <p>Organization: ${user.organisation}</p>
+                <img src="${user.userImage}" alt="Profile Image" style="height: 70px; width: 70px; border-radius: 50%;">
+            `;
+            return userProfileDiv;
+        };
+    
+        fetchUserProfiles();
+    
+        // JavaScript for the 3D effect when scrolling
+        window.addEventListener('scroll', function () {
+            const body = document.body;
+            const navbar = document.querySelector('.navbar');
+            const userProfiles = document.querySelector('.user-profile-container');
+            const scroll = window.scrollY;
+    
+            if (scroll > 50) {
+                body.classList.add('scrolled');
+                userProfiles.style.marginTop = '20px'; // Adjusted margin for user profiles
+            } else {
+                body.classList.remove('scrolled');
+                userProfiles.style.marginTop = '70px'; // Adjusted margin for user profiles
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
