@@ -1,4 +1,4 @@
-// Function to fetch Codeforces user data
+
 async function fetchCodeforcesUser(username) {
     const apiKey = 'YOUR_CODEFORCES_API_KEY';
     const apiUrl = `https://codeforces.com/api/user.info?handles=${username}&key=${apiKey}`;
@@ -18,7 +18,7 @@ async function fetchCodeforcesUser(username) {
     }
 }
 
-// Function to handle user search
+
 async function searchUser() {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
