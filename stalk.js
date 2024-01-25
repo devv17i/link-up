@@ -26,7 +26,7 @@ const firebaseConfig = {
         });
 }
 
-// Event listener for the "stalk" button
+
 document.getElementById('add').addEventListener('click', function () {
     const userName = document.querySelector('[name="userName"]').textContent;
     const rating = document.querySelector('[name="rating"]').textContent;
@@ -34,7 +34,7 @@ document.getElementById('add').addEventListener('click', function () {
     const contribution = document.querySelector('[name="contribution"]').textContent;
     const country = document.querySelector('[name="country"]').textContent;
     const organisation = document.querySelector('[name="organisation"]').textContent;
-    const userImage = document.querySelector('img').src; // Get the user image URL
+    const userImage = document.querySelector('img').src; 
 
     const userProfile = {
         userName,
@@ -43,7 +43,7 @@ document.getElementById('add').addEventListener('click', function () {
         contribution,
         country,
         organisation,
-        userImage, // Include the user image URL
+        userImage,
     };
 
     storeUserProfile(userProfile);
