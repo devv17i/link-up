@@ -1,6 +1,6 @@
 
 async function fetchCodeforcesUser(username) {
-    const apiKey = 'YOUR_CODEFORCES_API_KEY';
+    
     const apiUrl = `https://codeforces.com/api/user.info?handles=${username}&key=${apiKey}`;
 
     try {
