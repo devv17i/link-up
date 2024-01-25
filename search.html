@@ -25,13 +25,10 @@
             var searchResults = document.getElementById('searchResults');
             searchResults.innerHTML = '';
 
-            // Replace 'YOUR_CODEFORCES_API_KEY' with your actual Codeforces API key
-            // var apiKey = 'YOUR_CODEFORCES_API_KEY';
-
-            // Codeforces API endpoint for user information
+          
             var apiUrl = `https://codeforces.com/api/user.info?handles=${searchInput}`;
 
-            // Fetch data from Codeforces API
+         
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
