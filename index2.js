@@ -21,7 +21,7 @@ eyeIcon.addEventListener("click", () => {
 
 links.forEach(link => {
 link.addEventListener("click", e => {
- e.preventDefault(); //preventing form submit
+ e.preventDefault(); 
  forms.classList.toggle("show-signup");
 })
 })
@@ -43,7 +43,7 @@ link.addEventListener("click", e => {
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  // auth.languageCode = 'en';
+
   const provider = new GoogleAuthProvider();
 
   const googleLogin = document.getElementById("goole-login-button");
@@ -142,40 +142,7 @@ document.getElementById("userin").addEventListener("click", ()=>{
       })
   }
 )
-  // const user = auth.currentUser;
 
-  // function updateUserProfile(user){
-  //   const userName = user.displayName;
-  //   const userEmail = user.email;
-  //   const userProfilePicture = user.photoURL;
-  //   console.log(userEmail);
-
-  //   document.getElementById("userName").textContent = userName;
-  //   document.getElementById("userEmail").textContent = userEmail;
-  //   document.getElementById("userProfilePicture").src = userProfilePicture;
-
-  // }
-
-  // onAuthStateChanged(auth, (user) =>{
-  //   if (user){
-  //     updateUserProfile(user);
-  //     const uid = user.uid;
-  //     return uid;
-
-  //   }else{
-  //     alert("create account and login");
-  //   }
-  // });
-
-  // function updateUserProfile(user){
-  //   const userName = user.displayName;
-  //   const userEmail = user.email;
-  //   const userProfilePicture = user.photoURL;
-
-
-  // }
-
-  // updateUserProfile()
 
 
 
