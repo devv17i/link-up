@@ -1,4 +1,4 @@
-// Retrieve user details from local storage
+
 const userDetails = JSON.parse(localStorage.getItem('userDetails'));
 
 if (userDetails) {
@@ -7,7 +7,7 @@ if (userDetails) {
     alert('User details not found');
 }
 
-// Function to display user profile
+
 function displayUserProfile(user) {
     const userProfileContainer = document.getElementById('user-profile');
     userProfileContainer.innerHTML = `
