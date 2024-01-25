@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-image: url('metal-texture-with-dust-scratches-cracks-textured-backgrounds.jpg'); /* Replace with your image URL */
+            background-image: url('metal-texture-with-dust-scratches-cracks-textured-backgrounds.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -18,7 +18,7 @@
         .navbar {
             display: flex;
             justify-content: center;
-            background-color: rgba(255, 255, 255, 0); /* Semi-transparent blue background */
+            background-color: rgba(255, 255, 255, 0); 
             padding: 10px;
             position: fixed;
             top: 0;
@@ -48,13 +48,13 @@
             flex-wrap: wrap;
             justify-content: center;
             align-content: center;
-            margin-top: 70px; /* Adjusted margin to account for sticky navbar */
+            margin-top: 70px; 
             padding: 20px;
             background-color: rgba(255, 255, 255, 0);
             max-width: 800px;
             width: 100%;
             color: white;
-            margin-bottom: 70px; /* Adjusted margin for bottom */
+            margin-bottom: 70px; 
             margin-left: 280px;
         }
 
@@ -84,7 +84,7 @@
             margin-top: 10px;
         }
 
-        /* Add more styles or adjust as needed */
+
     </style>
 </head>
 
@@ -96,14 +96,14 @@
 </div>
 
 <div class="user-profile-container" id="userTableBody">
-        <!-- User profiles will be dynamically added here -->
+
     </div>
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
         import { getFirestore, collection, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
     
-        // Initialize Firebase
+
         const firebaseConfig = {
             apiKey: "AIzaSyCR8FfTUGjiSXgN2XzSHjN9owwrbOX-Uss",
             authDomain: "oauth-ebafa.firebaseapp.com",
@@ -130,7 +130,7 @@
         };
     
         const fetchUserProfiles = async () => {
-            // Fetch user profiles from Firebase and display in the table
+
             const userTableBody = document.getElementById('userTableBody');
             userTableBody.innerHTML = '';
     
@@ -164,7 +164,7 @@
     
         fetchUserProfiles();
     
-        // JavaScript for the 3D effect when scrolling
+
         window.addEventListener('scroll', function () {
             const body = document.body;
             const navbar = document.querySelector('.navbar');
@@ -173,10 +173,10 @@
     
             if (scroll > 50) {
                 body.classList.add('scrolled');
-                userProfiles.style.marginTop = '20px'; // Adjusted margin for user profiles
+                userProfiles.style.marginTop = '20px'; 
             } else {
                 body.classList.remove('scrolled');
-                userProfiles.style.marginTop = '70px'; // Adjusted margin for user profiles
+                userProfiles.style.marginTop = '70px'; 
             }
         });
     </script>
