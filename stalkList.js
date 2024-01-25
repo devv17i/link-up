@@ -1,7 +1,7 @@
-// This script fetches and displays the user's stalk list
+
 const stalkListContainer = document.getElementById('stalk-list-container');
 
-// Initialize Firebase with your own config
+
 const firebaseConfig = {
     apiKey: "AIzaSyCR8FfTUGjiSXgN2XzSHjN9owwrbOX-Uss",
     authDomain: "oauth-ebafa.firebaseapp.com",
@@ -12,10 +12,10 @@ const firebaseConfig = {
   };
 firebase.initializeApp(firebaseConfig);
 
-// Reference to the Firebase Firestore collection
+
 const stalkListCollection = firebase.firestore().collection("YOUR_STALKLIST_COLLECTION");
 
-// Fetch and display the stalk list
+
 async function displayStalkList() {
     try {
         const snapshot = await stalkListCollection.get();
@@ -45,5 +45,5 @@ async function displayStalkList() {
     }
 }
 
-// Call the function to display the stalk list on page load
+
 displayStalkList();
